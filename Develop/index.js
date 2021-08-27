@@ -1,5 +1,5 @@
 // TODO: Include packages needed for this application
-var fileGenerator = require("./fileGenerator");
+var generateMarkdown = require("./generateMarkdown");
 var fs = require("fs");
 var inquirer = require("inquirer");
 
@@ -37,7 +37,16 @@ const questions = [
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+    .then((inquirerResponse, data) => {   
+        console.log("Making ReadMe");
+        fs.writeFileSync("ReadMe.md", inquirerResponse, data);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+}
 
 // Function call to initialize app
 init();
