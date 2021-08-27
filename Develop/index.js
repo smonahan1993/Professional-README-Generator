@@ -54,11 +54,11 @@ function writeToFile(fileName, data) {
         console.log('Success! Information transferred to the README!')
     });
 };
-}
+
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer(questions)
+    inquirer.prompt(questions)
     .then((inquirerResponse, data) => {   
         console.log("Making ReadMe");
         fs.writeFileSync("ReadMe.md", inquirerResponse, data);
