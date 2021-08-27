@@ -29,16 +29,36 @@ const questions = [
         type: "input",
         message: "What are the test instructions?",
         name: "test"
+    },{
+        type: 'list',
+        name: 'license',
+        message: 'Choose a license.',
+        choices: ['MIT', 'Apache', 'GPL'],
+    },{
+        type: 'input',
+        name: 'username',
+        message: 'What is your Github username?',
+    },{
+        type: 'input',
+        name: 'email',
+        message: 'What is your email?'
     }
 
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => {
+        if (err)
+            throw err;
+        console.log('Success! Information transferred to the README!')
+    });
+};
+}
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions)
+    inquirer(questions)
     .then((inquirerResponse, data) => {   
         console.log("Making ReadMe");
         fs.writeFileSync("ReadMe.md", inquirerResponse, data);
