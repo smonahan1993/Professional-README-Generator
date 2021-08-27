@@ -59,9 +59,10 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-    .then((inquirerResponse, data) => {   
+    .then((data) => {   
+        console.log(data);
         console.log("Making ReadMe");
-        fs.writeFileSync("ReadMe.md", inquirerResponse, data);
+        fs.writeFileSync("README.md", generateMarkdown(data));
     })
     .catch((err) => {
         console.log(err);
